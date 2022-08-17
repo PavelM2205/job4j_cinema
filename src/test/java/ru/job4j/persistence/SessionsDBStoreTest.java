@@ -12,7 +12,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 
-class SessionsDBStoreTest {
+public class SessionsDBStoreTest {
 
     @AfterEach
     public void cleanTable() throws SQLException {
@@ -23,7 +23,7 @@ class SessionsDBStoreTest {
     }
 
     @Test
-    void whenAddSession() {
+    public void whenAddSession() {
         SessionsDBStore store = new SessionsDBStore(new Main().loadPool());
         Session session = new Session("Белое солнце пустыни");
         store.addSession(session);
