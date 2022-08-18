@@ -2,6 +2,7 @@ package ru.job4j.persistence;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.job4j.Main;
 import ru.job4j.models.Session;
@@ -16,10 +17,15 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.*;
 
 public class TicketDBStoreTest {
+    private static BasicDataSource pool;
+
+    @BeforeAll
+    public static void loadPool() {
+        pool = new Main().loadPool();
+    }
 
     @AfterEach
     public void cleanTables() throws SQLException {
-        BasicDataSource pool = new Main().loadPool();
         try (PreparedStatement st = pool.getConnection().prepareStatement(
                 "DELETE FROM ticket")) {
             st.execute();
@@ -37,7 +43,6 @@ public class TicketDBStoreTest {
 
     @Test
     public void whenAddTicket() {
-        BasicDataSource pool = new Main().loadPool();
         TicketDBStore ticketStore = new TicketDBStore(pool);
         UsersDBStore userStore = new UsersDBStore(pool);
         SessionsDBStore sessionStore = new SessionsDBStore(pool);
@@ -56,7 +61,6 @@ public class TicketDBStoreTest {
 
     @Test
     public void whenUpdateTicketThenMustBeChangedWithSameId() {
-        BasicDataSource pool = new Main().loadPool();
         TicketDBStore ticketStore = new TicketDBStore(pool);
         UsersDBStore userStore = new UsersDBStore(pool);
         SessionsDBStore sessionStore = new SessionsDBStore(pool);
@@ -81,7 +85,6 @@ public class TicketDBStoreTest {
 
     @Test
     public void whenAddTwoTicketsThenFindAllMustReturnsBoth() {
-        BasicDataSource pool = new Main().loadPool();
         TicketDBStore ticketStore = new TicketDBStore(pool);
         UsersDBStore userStore = new UsersDBStore(pool);
         SessionsDBStore sessionStore = new SessionsDBStore(pool);
@@ -103,14 +106,12 @@ public class TicketDBStoreTest {
 
     @Test
     public void whenTicketIsNotIntoStoreThenFindByIdMustReturnsEmptyOptional() {
-        BasicDataSource pool = new Main().loadPool();
         TicketDBStore ticketStore = new TicketDBStore(pool);
         assertThat(ticketStore.findById(1)).isEqualTo(Optional.empty());
     }
 
     @Test
     public void whenAddTicketThenMustBeInstallIdIntoIt() {
-        BasicDataSource pool = new Main().loadPool();
         TicketDBStore ticketStore = new TicketDBStore(pool);
         UsersDBStore userStore = new UsersDBStore(pool);
         SessionsDBStore sessionStore = new SessionsDBStore(pool);
