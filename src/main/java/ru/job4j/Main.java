@@ -34,6 +34,7 @@ public class Main {
         pool.setUrl(cfg.getProperty("jdbc.url"));
         pool.setMinIdle(5);
         pool.setMaxIdle(10);
+        pool.setMaxTotal(100);
         pool.setMaxOpenPreparedStatements(100);
         return pool;
     }
