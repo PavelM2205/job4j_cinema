@@ -1,6 +1,8 @@
 package ru.job4j.persistence;
 
+import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.job4j.Main;
 import ru.job4j.models.User;
@@ -13,10 +15,16 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.*;
 
 public class UsersDBStoreTest {
+    private static BasicDataSource pool;
+
+    @BeforeAll
+    public static void loadPool() {
+        pool = new Main().loadPool();
+    }
 
     @AfterEach
     public void cleanTable() throws SQLException {
-        try (PreparedStatement statement = new Main().loadPool().getConnection()
+        try (PreparedStatement statement = pool.getConnection()
                 .prepareStatement("DELETE FROM users")) {
             statement.execute();
         }
@@ -24,7 +32,7 @@ public class UsersDBStoreTest {
 
     @Test
     public void whenAddUser() {
-        UsersDBStore store = new UsersDBStore(new Main().loadPool());
+        UsersDBStore store = new UsersDBStore(pool);
         User user = new User("Ivan", "123@mail", "2-00-00");
         store.addUser(user);
         User userFromDb = store.findById(user.getId()).get();
@@ -35,7 +43,7 @@ public class UsersDBStoreTest {
 
     @Test
     public void whenUpdateThenMustBeChangedUserWithSameId() {
-        UsersDBStore store = new UsersDBStore(new Main().loadPool());
+        UsersDBStore store = new UsersDBStore(pool);
         User user = new User("Pavel", "456@mail", "3-00-00");
         store.addUser(user);
         User changed = new User(
@@ -49,7 +57,7 @@ public class UsersDBStoreTest {
 
     @Test
     public void whenAddUserThenMustBeInstallIdIntoUser() {
-        UsersDBStore store = new UsersDBStore(new Main().loadPool());
+        UsersDBStore store = new UsersDBStore(pool);
         User user = new User("Maxim", "abc@mail", "4-00-00");
         store.addUser(user);
         assertThat(user.getId()).isNotEqualTo(0);
@@ -57,7 +65,7 @@ public class UsersDBStoreTest {
 
     @Test
     public void whenAddTwoUsersThenFindAllReturnsBoth() {
-        UsersDBStore store = new UsersDBStore(new Main().loadPool());
+        UsersDBStore store = new UsersDBStore(pool);
         User user1 = new User("Andrey", "vbn@mail", "5-00-00");
         User user2 = new User("Alexey", "jkl@mail", "6-00-00");
         store.addUser(user1);
@@ -68,7 +76,7 @@ public class UsersDBStoreTest {
 
     @Test
     public void whenUserIsNotIntoDBThenMustBeEmptyOptional() {
-        UsersDBStore store = new UsersDBStore(new Main().loadPool());
+        UsersDBStore store = new UsersDBStore(pool);
         assertThat(store.findById(1)).isEqualTo(Optional.empty());
     }
 }
