@@ -123,4 +123,22 @@ public class TicketDBStoreTest {
         ticketStore.add(ticket);
         assertThat(ticket.getId()).isNotEqualTo(0);
     }
+
+    @Test
+    public void whenAddTicketWithSameSessionCellAndRowThenMustReturnsOptionalEmpty() {
+        TicketDBStore ticketStore = new TicketDBStore(pool);
+        UsersDBStore userStore = new UsersDBStore(pool);
+        SessionsDBStore sessionStore = new SessionsDBStore(pool);
+        User user1 = new User("Ivan", "123@mail", "2-00-00");
+        User user2 = new User("Petr", "456@mail", "3-00-00");
+        userStore.addUser(user1);
+        userStore.addUser(user2);
+        Session session = new Session("Taxi");
+        sessionStore.addSession(session);
+        Ticket ticket1 = new Ticket(session, user1, 2, 2);
+        Ticket ticket2 = new Ticket(session, user2, 2, 2);
+        ticketStore.add(ticket1);
+        Optional<Ticket> ticketFromDB = ticketStore.add(ticket2);
+        assertThat(ticketFromDB.isEmpty()).isTrue();
+    }
 }

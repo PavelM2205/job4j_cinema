@@ -3,6 +3,7 @@ package ru.job4j.persistence;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 import ru.job4j.models.Session;
 
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class SessionsDBStore {
     private final BasicDataSource pool;
     private static final Logger LOG = LoggerFactory.getLogger(SessionsDBStore.class);
