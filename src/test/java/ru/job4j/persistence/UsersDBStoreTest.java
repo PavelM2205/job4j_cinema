@@ -79,4 +79,44 @@ public class UsersDBStoreTest {
         UsersDBStore store = new UsersDBStore(pool);
         assertThat(store.findById(1)).isEqualTo(Optional.empty());
     }
+
+    @Test
+    public void whenAddUserWithSameEmailThenReturnsOptionalEmptyAndOnlyOneUserIntoDB() {
+        UsersDBStore store = new UsersDBStore(pool);
+        User user1 = new User("Andrey", "vbn@mail", "5-00-00");
+        User user2 = new User("Alexey", "vbn@mail", "6-00-00");
+        store.addUser(user1);
+        Optional<User> result = store.addUser(user2);
+        Optional<User> expected = Optional.empty();
+        assertThat(result).isEqualTo(expected);
+        assertThat(store.findAll().size()).isEqualTo(1);
+        assertThat(user2.getId()).isEqualTo(0);
+    }
+
+    @Test
+    public void whenAddUserWithSamePhoneThenReturnsOptionalEmptyAndOnlyOneUserIntoDB() {
+        UsersDBStore store = new UsersDBStore(pool);
+        User user1 = new User("Andrey", "vbn@mail", "5-00-00");
+        User user2 = new User("Alexey", "vbn@mail", "5-00-00");
+        store.addUser(user1);
+        Optional<User> result = store.addUser(user2);
+        Optional<User> expected = Optional.empty();
+        assertThat(result).isEqualTo(expected);
+        assertThat(store.findAll().size()).isEqualTo(1);
+        assertThat(user2.getId()).isEqualTo(0);
+    }
+
+    @Test
+    public void whenAddUserWithSamePhoneAndEmailThenReturnsOptionalEmptyAndOnlyOneUserIntoDB() {
+        UsersDBStore store = new UsersDBStore(pool);
+        User user1 = new User("Andrey", "vbn@mail", "5-00-00");
+        User user2 = new User("Alexey", "vbn@mail", "5-00-00");
+        store.addUser(user1);
+        Optional<User> result = store.addUser(user2);
+        Optional<User> expected = Optional.empty();
+        assertThat(result).isEqualTo(expected);
+        assertThat(store.findAll().size()).isEqualTo(1);
+        assertThat(user2.getId()).isEqualTo(0);
+    }
+
 }
