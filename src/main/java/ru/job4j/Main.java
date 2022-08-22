@@ -3,9 +3,14 @@ package ru.job4j;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+
 import java.io.InputStream;
 import java.util.Properties;
 
+@SpringBootApplication
 public class Main {
     private static final Logger LOG = LoggerFactory.getLogger(Main.class);
 
@@ -25,6 +30,7 @@ public class Main {
         return cfg;
     }
 
+    @Bean
     public BasicDataSource loadPool() {
         Properties cfg = loadDBProperties();
         BasicDataSource pool = new BasicDataSource();
@@ -37,5 +43,10 @@ public class Main {
         pool.setMaxTotal(100);
         pool.setMaxOpenPreparedStatements(100);
         return pool;
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
+        System.out.println("Go to: http://localhost:8080/index");
     }
 }
