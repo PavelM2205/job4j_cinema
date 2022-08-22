@@ -3,6 +3,7 @@ package ru.job4j.persistence;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 import ru.job4j.models.Session;
 import ru.job4j.models.Ticket;
 import ru.job4j.models.User;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class TicketDBStore {
     private static final Logger LOG = LoggerFactory.getLogger(TicketDBStore.class);
     private final BasicDataSource pool;
@@ -21,9 +23,11 @@ public class TicketDBStore {
         this.pool = pool;
     }
 
-    public Ticket add(Ticket ticket) {
+    public Optional<Ticket> add(Ticket ticket) {
+        Optional<Ticket> result = Optional.empty();
         try (PreparedStatement st = pool.getConnection().prepareStatement(
-                "INSERT INTO ticket (session_id, user_id, pos_row, cell) VALUES (?, ?, ?, ?)",
+                "INSERT INTO ticket (session_id, user_id, pos_row, cell) VALUES (?, ?, ?, ?)"
+                + "ON CONFLICT DO NOTHING",
                 PreparedStatement.RETURN_GENERATED_KEYS)) {
             st.setInt(1, ticket.getSession().getId());
             st.setInt(2, ticket.getUser().getId());
@@ -33,12 +37,13 @@ public class TicketDBStore {
             try (ResultSet res = st.getGeneratedKeys()) {
                 if (res.next()) {
                     ticket.setId(res.getInt("id"));
+                    result = Optional.of(ticket);
                 }
             }
         } catch (Exception exc) {
             LOG.error("Exception: ", exc);
         }
-        return ticket;
+        return result;
     }
 
     public Optional<Ticket> findById(int id) {
