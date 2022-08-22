@@ -1,5 +1,6 @@
 package ru.job4j.service;
 
+import org.springframework.stereotype.Service;
 import ru.job4j.models.Ticket;
 import ru.job4j.persistence.TicketDBStore;
 
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TicketService {
     private final TicketDBStore store;
     private final SessionService sessionService;
@@ -19,7 +21,7 @@ public class TicketService {
         this.userService = userService;
     }
 
-    public Ticket add(Ticket ticket) {
+    public Optional<Ticket> add(Ticket ticket) {
         return store.add(ticket);
     }
 

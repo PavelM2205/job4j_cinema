@@ -1,11 +1,13 @@
 package ru.job4j.service;
 
+import org.springframework.stereotype.Service;
 import ru.job4j.models.Session;
 import ru.job4j.persistence.SessionsDBStore;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class SessionService {
     private final SessionsDBStore store;
 
