@@ -1,6 +1,5 @@
 package ru.job4j.control;
 
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +26,6 @@ public class UserControl {
 
     @PostMapping("/registration")
     public String registration(@ModelAttribute User user, Model model) {
-        System.out.println(user);
         Optional<User> optUser = userService.add(user);
         if (optUser.isEmpty()) {
             model.addAttribute("fail", true);
@@ -40,7 +38,7 @@ public class UserControl {
 
     @GetMapping("/loginPage")
     public String loginPage(Model model, HttpSession httpSession) {
-        if (httpSession.getAttribute("mustLoginForTakeTicket").equals(true)) {
+        if (httpSession.getAttribute("mustLoginForTakeTicket") != null) {
             model.addAttribute("fail", true);
             model.addAttribute("message",
                     "Для приобретения билета необходимо войти в свою учетную запись");
@@ -58,7 +56,13 @@ public class UserControl {
                     "Неверно введены электронная почта и/или номер телефона");
             return "login";
         }
-        httpSession.setAttribute("user_id", userFromDB.get().getId());
-        return "index";
+        httpSession.setAttribute("user", userFromDB.get());
+        return "redirect:/index";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession httpSession) {
+        httpSession.invalidate();
+        return "redirect:/loginPage";
     }
 }

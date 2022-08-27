@@ -2,43 +2,56 @@ package ru.job4j.control;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.job4j.models.Place;
 import ru.job4j.models.Session;
 import ru.job4j.models.Ticket;
 import ru.job4j.models.User;
-import ru.job4j.persistence.TicketDBStore;
 import ru.job4j.service.SessionService;
+import ru.job4j.service.TicketService;
 import ru.job4j.service.UserService;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class TicketControl {
     private final SessionService sessionService;
     private final UserService userService;
-    private final TicketDBStore ticketStore;
+    private final TicketService ticketService;
 
     public TicketControl(SessionService sessionService, UserService userService,
-                         TicketDBStore ticketStore) {
+                         TicketService ticketService) {
         this.sessionService = sessionService;
         this.userService = userService;
-        this.ticketStore = ticketStore;
+        this.ticketService = ticketService;
     }
 
     @PostMapping("/getTicket")
-    public String takeTicket(@ModelAttribute Ticket ticket,
-                             @RequestParam(name = "session_id") int sessionId,
-                             HttpSession httpSession, Model model) {
+    public String getTicket(@RequestParam(name = "sess_id") int sessionId,
+                             HttpSession httpSession, Model model,
+                             @RequestParam("place") List<Integer> placesId) {
+        User user = userService.findById(((User) httpSession.getAttribute("user")).getId()).get();
         Session session = sessionService.findById(sessionId).get();
-        ticket.setSession(session);
-        User user = userService.findById((int) httpSession.getAttribute("user_id")).get();
-        ticket.setUser(user);
-        Optional<Ticket> optionalTicket = ticketStore.add(ticket);
-        if (optionalTicket.isEmpty()) {
-            model.addAttribute("fail_get_ticket", true);
+        List<Ticket> tickets = new ArrayList<>();
+        for (var el : placesId) {
+            Place place = sessionService.findPlaceById(el);
+            tickets.add(new Ticket(
+                    session,
+                    user,
+                    place.getRow(),
+                    place.getCell()
+            ));
+        }
+        for (var ticket : tickets) {
+            Optional<Ticket> optTicket = ticketService.add(ticket);
+            if (optTicket.isEmpty()) {
+                model.addAttribute("failTicket", ticket);
+                model.addAttribute("fail_get_ticket", true);
+            }
         }
         return "ticket_result";
     }

@@ -10,9 +10,7 @@ import ru.job4j.models.User;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Repository
 public class TicketDBStore {
@@ -95,6 +93,26 @@ public class TicketDBStore {
                         new User(res.getInt("user_id")),
                         res.getInt("pos_row"),
                         res.getInt("cell")
+                    ));
+                }
+            }
+        } catch (Exception exc) {
+            LOG.error("Exception: ", exc);
+        }
+        return result;
+    }
+
+    public List<Ticket> findAllTicketsForSomeSession(int sessionId) {
+        List<Ticket> result = new ArrayList<>();
+        try (PreparedStatement st = pool.getConnection().prepareStatement(
+                "SELECT * FROM ticket WHERE session_id = ?")) {
+            st.setInt(1, sessionId);
+            try (ResultSet res = st.executeQuery()) {
+                while (res.next()) {
+                    result.add(new Ticket(
+                            res.getInt("id"),
+                            res.getInt("pos_row"),
+                            res.getInt("cell")
                     ));
                 }
             }

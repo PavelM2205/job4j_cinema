@@ -48,7 +48,7 @@ public class TicketServiceTest {
         TicketDBStore ticketStore = new TicketDBStore(pool);
         UsersDBStore userStore = new UsersDBStore(pool);
         SessionsDBStore sessionStore = new SessionsDBStore(pool);
-        SessionService sessionService = new SessionService(sessionStore);
+        SessionService sessionService = new SessionService(sessionStore, ticketStore);
         UserService userService = new UserService(userStore);
         TicketService ticketService = new TicketService(
                 ticketStore, sessionService, userService
@@ -78,7 +78,7 @@ public class TicketServiceTest {
             TicketDBStore ticketStore = new TicketDBStore(pool);
             UsersDBStore userStore = new UsersDBStore(pool);
             SessionsDBStore sessionStore = new SessionsDBStore(pool);
-            SessionService sessionService = new SessionService(sessionStore);
+            SessionService sessionService = new SessionService(sessionStore, ticketStore);
             UserService userService = new UserService(userStore);
             TicketService ticketService = new TicketService(
                     ticketStore, sessionService, userService);

@@ -23,7 +23,7 @@ public class SessionsDBStore {
 
     public Session addSession(Session session) {
         try (PreparedStatement st = pool.getConnection().prepareStatement(
-                "INSERT INTO sessions(name) VALUES (?)",
+                "INSERT INTO sessions(name) VALUES (?) ON CONFLICT DO NOTHING",
                 PreparedStatement.RETURN_GENERATED_KEYS)) {
             st.setString(1, session.getName());
             st.execute();

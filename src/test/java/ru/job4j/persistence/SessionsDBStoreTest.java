@@ -57,8 +57,7 @@ public class SessionsDBStoreTest {
         Session session2 = new Session("Blade");
         store.addSession(session1);
         store.addSession(session2);
-        List<Session> excepted = List.of(session1, session2);
-        assertThat(store.findAll()).isEqualTo(excepted);
+        assertThat(store.findAll()).containsExactlyInAnyOrder(session1, session2);
     }
 
     @Test
