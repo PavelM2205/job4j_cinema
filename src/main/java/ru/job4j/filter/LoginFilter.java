@@ -16,7 +16,7 @@ public class LoginFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
         String uri = req.getRequestURI();
-        if (uri.endsWith("getTicket") && req.getSession().getAttribute("user_id") == null) {
+        if (uri.endsWith("getTicket") && req.getSession().getAttribute("user") == null) {
             req.getSession().setAttribute("mustLoginForTakeTicket", true);
             res.sendRedirect(req.getContextPath() + "/loginPage");
             return;
