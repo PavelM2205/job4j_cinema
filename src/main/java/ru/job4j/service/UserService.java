@@ -1,17 +1,17 @@
 package ru.job4j.service;
 
 import org.springframework.stereotype.Service;
-import ru.job4j.models.User;
-import ru.job4j.persistence.UsersDBStore;
+import ru.job4j.model.User;
+import ru.job4j.repository.UsersRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService {
-    private final UsersDBStore store;
+    private final UsersRepository store;
 
-    public UserService(UsersDBStore store) {
+    public UserService(UsersRepository store) {
         this.store = store;
     }
 

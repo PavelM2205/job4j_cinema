@@ -1,17 +1,17 @@
-package ru.job4j.models;
+package ru.job4j.dto;
 
 import java.util.Objects;
 
-public class Place {
+public class PlaceDTO {
     private int id;
     private int row;
     private int cell;
     private boolean isTaken = false;
 
-    public Place() {
+    public PlaceDTO() {
     }
 
-    public Place(int id, int row, int cell) {
+    public PlaceDTO(int id, int row, int cell) {
         this.id = id;
         this.row = row;
         this.cell = cell;
@@ -57,8 +57,8 @@ public class Place {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Place place = (Place) o;
-        return row == place.row && cell == place.cell;
+        PlaceDTO placeDTO = (PlaceDTO) o;
+        return row == placeDTO.row && cell == placeDTO.cell;
     }
 
     @Override

@@ -1,20 +1,19 @@
-package ru.job4j.persistence;
+package ru.job4j.repository;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.job4j.Main;
-import ru.job4j.models.Session;
+import ru.job4j.model.Session;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class SessionsDBStoreTest {
+public class SessionsRepositoryTest {
     private static BasicDataSource pool;
 
     @BeforeAll
@@ -32,7 +31,7 @@ public class SessionsDBStoreTest {
 
     @Test
     public void whenAddSession() {
-        SessionsDBStore store = new SessionsDBStore(pool);
+        SessionsRepository store = new SessionsRepository(pool);
         Session session = new Session("Белое солнце пустыни");
         store.addSession(session);
         Session sessionFromDB = store.findById(session.getId()).get();
@@ -41,7 +40,7 @@ public class SessionsDBStoreTest {
 
     @Test
     public void whenUpdateSessionThenMustBeChangedWithSameId() {
-        SessionsDBStore store = new SessionsDBStore(pool);
+        SessionsRepository store = new SessionsRepository(pool);
         Session session = new Session("Batman");
         store.addSession(session);
         Session changed = new Session(session.getId(), "Batman 2");
@@ -52,7 +51,7 @@ public class SessionsDBStoreTest {
 
     @Test
     public void whenAddTwoSessionsThenFindAllReturnsBoth() {
-        SessionsDBStore store = new SessionsDBStore(pool);
+        SessionsRepository store = new SessionsRepository(pool);
         Session session1 = new Session("Taxi");
         Session session2 = new Session("Blade");
         store.addSession(session1);
@@ -62,7 +61,7 @@ public class SessionsDBStoreTest {
 
     @Test
     public void whenAddSessionThenMustBeInstallIdIntoIt() {
-        SessionsDBStore store = new SessionsDBStore(pool);
+        SessionsRepository store = new SessionsRepository(pool);
         Session session = new Session("Blade");
         store.addSession(session);
         assertThat(session.getId()).isNotEqualTo(0);
@@ -70,7 +69,7 @@ public class SessionsDBStoreTest {
 
     @Test
     public void whenSessionInNotIntoStoreThenFindByIdReturnsEmptyOptional() {
-        SessionsDBStore store = new SessionsDBStore(pool);
+        SessionsRepository store = new SessionsRepository(pool);
         assertThat(store.findById(1)).isEqualTo(Optional.empty());
     }
 }

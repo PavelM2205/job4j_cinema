@@ -21,6 +21,9 @@ public class LoginFilter implements Filter {
             res.sendRedirect(req.getContextPath() + "/loginPage");
             return;
         }
+        if (uri.endsWith("getTicket") && req.getParameter("place") == null) {
+            req.getSession().setAttribute("not_specify_place", true);
+        }
         filterChain.doFilter(req, res);
     }
 }

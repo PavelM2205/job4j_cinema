@@ -1,21 +1,21 @@
-package ru.job4j.control;
+package ru.job4j.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.job4j.models.User;
+import ru.job4j.model.User;
 import ru.job4j.service.UserService;
 
 import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Controller
-public class UserControl {
+public class UserController {
     private final UserService userService;
 
-    public UserControl(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 

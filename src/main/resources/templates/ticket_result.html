@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="place justify-content-center align-items-center">
+        <div class="placeDTO justify-content-center align-items-center">
             <div class="container d-flex align-items-center justify-content-center">
                     <div th:if="${fail_get_ticket}" class="alert alert-warning" role="alert" style="width: 50%" th:object="${failTicket}">
                         <h4 class="alert-heading">Упс...</h4>
@@ -19,15 +19,18 @@
                         <hr>
                         <p class="mb-0">Попробуйте выбрать другие места.</p>
                     </div>
-            <div th:if="${fail_get_ticket} != true" class="alert alert-success" role="alert" style="width: 50%">
+            <div th:if="${fail_get_ticket} == false" class="alert alert-success" role="alert" style="width: 50%">
                 <h4 class="alert-heading">Отличная работа!</h4>
                 <p>Вы успешно приобрели билет на фильм.</p>
                 <hr>
                 <p class="mb-0">Билет будет выслан на указанную электронную почту.<br>
                     Приятного просмотра.
                 </p>
-        </div>
-        </div>
+            </div>
+                <div th:if="${not_specify_place}" class="alert alert-info" role="alert">
+                    Для покупки билета необходимо выбрать фильм и место!
+                </div>
+            </div>
         </div>
     </div>
 </body>
