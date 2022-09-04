@@ -31,9 +31,13 @@ http://localhost:8080/index
 ![ScreenShot](src/main/resources/img/autoriz_page_with_message.png)
 
 В правой части навигационной панели отображается
-имя пользователя. В случае, если пользователь не 
+имя пользователя и кнопка "Войти". В случае, если пользователь не 
 авторизирован, имя пользователя будет указано как "Гость".
 ![ScreeShot](src/main/resources/img/nav_bar_user_name.png)
+
+Если пользователь авторизован, то отображается имя пользователя
+и кнопка "Выйти".
+![ScrenShot](src/main/resources/img/nav_bar_reg_user_name.png)
 
 Для регистрации необходимо выбрать пункт меню "Зарегистрироваться".
 Откроется страница с формой регистрации.
@@ -51,6 +55,10 @@ http://localhost:8080/index
 В случае если билет уже приобретен другим пользователем,
 будет выведена соответствующая информация.
 ![ScreenShot](src/main/resources/img/get_ticket_fail.png)
+
+В случае нажатия кнопки "Купить билет" без выбора места,
+будет выведено информационное сообщение.
+![ScreenShot](src/main/resources/img/without_specify_place_message.png)
 
 
 
