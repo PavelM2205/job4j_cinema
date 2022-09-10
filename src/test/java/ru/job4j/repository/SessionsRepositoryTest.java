@@ -68,8 +68,8 @@ public class SessionsRepositoryTest {
     }
 
     @Test
-    public void whenSessionInNotIntoStoreThenFindByIdReturnsEmptyOptional() {
+    public void whenSessionIsNotIntoStoreThenFindByIdReturnsEmptyOptional() {
         SessionsRepository store = new SessionsRepository(pool);
-        assertThat(store.findById(1)).isEqualTo(Optional.empty());
+        assertThat(store.findById(0)).isEqualTo(Optional.empty());
     }
 }

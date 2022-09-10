@@ -11,9 +11,24 @@ Thymeleaf, Bootstrap, JDBC. Загрузка базы
 
 ## Запуск приложения
 
-1. Запустите метод main() в классе Main.
-2. Откройте браузер и перейдите по ссылке 
-http://localhost:8080/index
+Для успешного запуска проекта на вашем компьютере
+должно быть установлено:
+- JDK 17(+)
+- Maven
+- PostgreSql
+- Git
+
+Процесс установки:
+1. Скачайте проект к себе на компьютер, используя команду:
+`git clone https://github.com/PavelM2205/job4j_cinema.git`.
+2. В PostgreSQL создайте базу данных с именем "cinema_db".
+3. Добавьте свои данные "jdbc.username" и "jdbc.password" для доступа к базе данных в файле
+`src/main/resources/db.poperties`.
+4. Перейдите в директорию проекта и выполните команду: 
+`mvn install -Pproduction -Dmaven.test.skip=true`.
+5. Запустите приложение, используя команду: `mvn exec:java -Dexec.mainClass=ru.job4j.Main`.
+6. После запуска приложение будет доступно по адресу: 
+http://localhost:8080/index .
 
 ## Использование
 
