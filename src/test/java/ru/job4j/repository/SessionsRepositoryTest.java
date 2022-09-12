@@ -72,4 +72,13 @@ public class SessionsRepositoryTest {
         SessionsRepository store = new SessionsRepository(pool);
         assertThat(store.findById(0)).isEqualTo(Optional.empty());
     }
+
+    @Test
+    public void whenAddTwoSessionsWithSameNameThenSecondAddReturnsOptionalEmpty() {
+        SessionsRepository store = new SessionsRepository(pool);
+        Session session1 = new Session("Taxi");
+        Session session2 = new Session("Taxi");
+        assertThat(store.addSession(session1).isPresent()).isTrue();
+        assertThat(store.addSession(session2).isEmpty()).isTrue();
+    }
 }

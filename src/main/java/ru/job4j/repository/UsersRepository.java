@@ -9,6 +9,7 @@ import ru.job4j.model.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +17,9 @@ import java.util.Optional;
 @Repository
 public class UsersRepository {
     private static final Logger LOG = LoggerFactory.getLogger(UsersRepository.class);
-    private static final String SELECT_USER = "INSERT INTO users(username, email, phone)"
-            + " VALUES (?, ?, ?) ON CONFLICT DO NOTHING";
+    private static final String SELECT_USER = """
+            INSERT INTO users(username, email, phone)
+            VALUES (?, ?, ?)""";
     private static final String SELECT_USER_BY_ID = "SELECT * FROM users WHERE id = ?";
     private static final String UPDATE_USER =
             "UPDATE users SET username = ?, email = ?, phone = ? WHERE id = ?";
@@ -46,6 +48,8 @@ public class UsersRepository {
                     result = Optional.of(user);
                 }
             }
+        } catch (SQLIntegrityConstraintViolationException exc) {
+            return Optional.empty();
         } catch (Exception exc) {
             LOG.error("Exception: ", exc);
         }

@@ -11,39 +11,42 @@ import ru.job4j.model.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.*;
 
 @Repository
 public class TicketRepository {
     private static final Logger LOG = LoggerFactory.getLogger(TicketRepository.class);
     private static final String INSERT_TICKET =
-            "INSERT INTO ticket (session_id, user_id, pos_row, cell) VALUES (?, ?, ?, ?)"
-            + "ON CONFLICT DO NOTHING";
-    private static final String SELECT_TICKET_BY_ID = "SELECT t.id, t.pos_row, t.cell,"
-        + " t.session_id, s.name, t.user_id, u.username, u.email, u.phone "
-        + "FROM ticket AS t "
-        + "LEFT JOIN sessions AS s "
-        + "ON t.session_id = s.id "
-        + "LEFT JOIN users AS u "
-        + "ON t.user_id = u.id "
-        + "WHERE t.id = ?";
+            "INSERT INTO ticket (session_id, user_id, pos_row, cell) VALUES (?, ?, ?, ?)";
+    private static final String SELECT_TICKET_BY_ID = """
+            SELECT t.id, t.pos_row, t.cell, t.session_id, s.name, t.user_id,
+            u.username, u.email, u.phone
+            FROM ticket AS t
+            JOIN sessions AS s
+            ON t.session_id = s.id
+            JOIN users AS u
+            ON t.user_id = u.id
+            WHERE t.id = ?""";
     private static final String UPDATE_TICKET =
             "UPDATE ticket SET session_id = ?, user_id = ?, pos_row = ?, cell = ?";
-    private static final String SELECT_ALL_TICKETS = "SELECT t.id, t.pos_row, t.cell, "
-        + "t.session_id, s.name, t.user_id, u.username, u.email, u.phone "
-        + "FROM ticket AS t "
-        + "LEFT JOIN sessions AS s "
-        + "ON t.session_id = s.id "
-        + "LEFT JOIN users AS u "
-        + "ON t.user_id = u.id";
-    private static final String SELECT_TICKETS_BY_SESSION_ID = "SELECT t.id, t.pos_row, t.cell,"
-        + " t.session_id, s.name, t.user_id, u.username, u.email, u.phone "
-        + "FROM ticket AS t "
-        + "LEFT JOIN sessions AS s "
-        + "ON t.session_id = s.id "
-        + "LEFT JOIN users AS u "
-        + "ON t.user_id = u.id "
-        + "WHERE s.id = ?";
+    private static final String SELECT_ALL_TICKETS = """
+            SELECT t.id, t.pos_row, t.cell, t.session_id, s.name,
+            t.user_id, u.username, u.email, u.phone
+            FROM ticket AS t
+            JOIN sessions AS s
+            ON t.session_id = s.id
+            JOIN users AS u
+            ON t.user_id = u.id""";
+    private static final String SELECT_TICKETS_BY_SESSION_ID = """
+            SELECT t.id, t.pos_row, t.cell, t.session_id, s.name,
+            t.user_id, u.username, u.email, u.phone
+            FROM ticket AS t
+            JOIN sessions AS s
+            ON t.session_id = s.id
+            JOIN users AS u
+            ON t.user_id = u.id
+            WHERE s.id = ?""";
     private final BasicDataSource pool;
 
     public TicketRepository(BasicDataSource pool) {
@@ -65,6 +68,8 @@ public class TicketRepository {
                     result = Optional.of(ticket);
                 }
             }
+        } catch (SQLIntegrityConstraintViolationException exc) {
+            return Optional.empty();
         } catch (Exception exc) {
             LOG.error("Exception: ", exc);
         }

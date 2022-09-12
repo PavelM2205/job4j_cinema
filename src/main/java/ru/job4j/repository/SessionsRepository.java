@@ -9,6 +9,7 @@ import ru.job4j.model.Session;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +17,7 @@ import java.util.Optional;
 @Repository
 public class SessionsRepository {
     private static final Logger LOG = LoggerFactory.getLogger(SessionsRepository.class);
-    private static final String INSERT_SESSION =
-            "INSERT INTO sessions(name) VALUES (?) ON CONFLICT DO NOTHING";
+    private static final String INSERT_SESSION = "INSERT INTO sessions(name) VALUES (?)";
     private static final String SELECT_SESSION_BY_ID = "SELECT * FROM sessions WHERE id = ?";
     private static final String UPDATE_SESSION = "UPDATE sessions SET name = ? WHERE id = ?";
     private static final String SELECT_ALL_SESSIONS = "SELECT * FROM sessions";
@@ -27,7 +27,8 @@ public class SessionsRepository {
         this.pool = pool;
     }
 
-    public Session addSession(Session session) {
+    public Optional<Session> addSession(Session session) {
+        Optional<Session> result = Optional.empty();
         try (PreparedStatement st = pool.getConnection().prepareStatement(
                 INSERT_SESSION, PreparedStatement.RETURN_GENERATED_KEYS)) {
             st.setString(1, session.getName());
@@ -35,12 +36,15 @@ public class SessionsRepository {
             try (ResultSet res = st.getGeneratedKeys()) {
                 if (res.next()) {
                     session.setId(res.getInt("id"));
+                    result = Optional.of(session);
                 }
             }
+        } catch (SQLIntegrityConstraintViolationException exc) {
+            return Optional.empty();
         } catch (Exception exc) {
             LOG.error("Exception: ", exc);
         }
-        return session;
+        return result;
     }
 
     public Optional<Session> findById(int id) {

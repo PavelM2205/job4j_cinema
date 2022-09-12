@@ -20,7 +20,7 @@ public class SessionService {
         this.ticketStore = ticketStore;
     }
 
-    public Session add(Session session) {
+    public Optional<Session> add(Session session) {
         return sessionStore.addSession(session);
     }
 
