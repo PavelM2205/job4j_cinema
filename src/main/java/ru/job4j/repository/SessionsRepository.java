@@ -39,8 +39,6 @@ public class SessionsRepository {
                     result = Optional.of(session);
                 }
             }
-        } catch (SQLIntegrityConstraintViolationException exc) {
-            return Optional.empty();
         } catch (Exception exc) {
             LOG.error("Exception: ", exc);
         }

@@ -9,7 +9,6 @@ import ru.job4j.model.User;
 import ru.job4j.service.UserService;
 
 import javax.servlet.http.HttpSession;
-import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -26,13 +25,7 @@ public class UserController {
 
     @PostMapping("/registration")
     public String registration(@ModelAttribute User user, Model model) {
-        Optional<User> optUser = userService.add(user);
-        if (optUser.isEmpty()) {
-            model.addAttribute("fail", true);
-            model.addAttribute("message",
-                    "Пользователь с такой почтой и/или номером телефона уже существует");
-            return "registration";
-        }
+        userService.add(user);
         return "login";
     }
 
@@ -48,15 +41,9 @@ public class UserController {
 
     @PostMapping("/login")
     public String login(@ModelAttribute User user, Model model, HttpSession httpSession) {
-        Optional<User> userFromDB = userService.findUserByEmailAndPhone(user.getEmail(),
+        User userFromDB = userService.findUserByEmailAndPhone(user.getEmail(),
                 user.getPhone());
-        if (userFromDB.isEmpty()) {
-            model.addAttribute("fail", true);
-            model.addAttribute("message",
-                    "Неверно введены электронная почта и/или номер телефона");
-            return "login";
-        }
-        httpSession.setAttribute("user", userFromDB.get());
+        httpSession.setAttribute("user", userFromDB);
         return "redirect:/index";
     }
 

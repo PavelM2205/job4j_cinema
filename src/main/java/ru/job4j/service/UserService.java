@@ -1,6 +1,8 @@
 package ru.job4j.service;
 
 import org.springframework.stereotype.Service;
+import ru.job4j.exception.UserByEmailAndPhoneNotFound;
+import ru.job4j.exception.UserWithSuchEmailAndPhoneAlreadyExists;
 import ru.job4j.model.User;
 import ru.job4j.repository.UsersRepository;
 
@@ -15,12 +17,20 @@ public class UserService {
         this.store = store;
     }
 
-    public Optional<User> add(User user) {
-        return store.addUser(user);
+    public User add(User user) {
+        Optional<User> optUser = store.addUser(user);
+        if (optUser.isEmpty()) {
+            throw new UserWithSuchEmailAndPhoneAlreadyExists("User was not added");
+        }
+        return optUser.get();
     }
 
-    public Optional<User> findById(int id) {
-        return store.findById(id);
+    public User findById(int id) {
+        Optional<User> optUser = store.findById(id);
+        if (optUser.isEmpty()) {
+            throw new IllegalArgumentException("User with such id does not exists");
+        }
+        return optUser.get();
     }
 
     public boolean update(User user) {
@@ -31,7 +41,12 @@ public class UserService {
         return store.findAll();
     }
 
-    public Optional<User> findUserByEmailAndPhone(String email, String phone) {
-        return store.findUserByEmailAndPhone(email, phone);
+    public User findUserByEmailAndPhone(String email, String phone) {
+        Optional<User> optUser = store.findUserByEmailAndPhone(email, phone);
+        if (optUser.isEmpty()) {
+            throw new UserByEmailAndPhoneNotFound(
+                    "User with such email and phone does nit exist");
+        }
+        return optUser.get();
     }
 }

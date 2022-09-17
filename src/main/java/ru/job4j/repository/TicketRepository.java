@@ -4,6 +4,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import ru.job4j.model.Place;
 import ru.job4j.model.Session;
 import ru.job4j.model.Ticket;
 import ru.job4j.model.User;
@@ -11,42 +12,53 @@ import ru.job4j.model.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.*;
 
 @Repository
 public class TicketRepository {
     private static final Logger LOG = LoggerFactory.getLogger(TicketRepository.class);
     private static final String INSERT_TICKET =
-            "INSERT INTO ticket (session_id, user_id, pos_row, cell) VALUES (?, ?, ?, ?)";
+            "INSERT INTO ticket (session_id, user_id, place_id) VALUES (?, ?, ?)";
     private static final String SELECT_TICKET_BY_ID = """
-            SELECT t.id, t.pos_row, t.cell, t.session_id, s.name, t.user_id,
+            SELECT t.id, t.place_id, p.pos_row, p.cell, t.session_id, s.name, t.user_id,
             u.username, u.email, u.phone
             FROM ticket AS t
             JOIN sessions AS s
             ON t.session_id = s.id
             JOIN users AS u
             ON t.user_id = u.id
+            JOIN places as p
+            ON t.place_id = p.id
             WHERE t.id = ?""";
     private static final String UPDATE_TICKET =
-            "UPDATE ticket SET session_id = ?, user_id = ?, pos_row = ?, cell = ?";
+            "UPDATE ticket SET session_id = ?, user_id = ?, place_id = ?";
     private static final String SELECT_ALL_TICKETS = """
-            SELECT t.id, t.pos_row, t.cell, t.session_id, s.name,
-            t.user_id, u.username, u.email, u.phone
-            FROM ticket AS t
-            JOIN sessions AS s
-            ON t.session_id = s.id
-            JOIN users AS u
-            ON t.user_id = u.id""";
-    private static final String SELECT_TICKETS_BY_SESSION_ID = """
-            SELECT t.id, t.pos_row, t.cell, t.session_id, s.name,
+            SELECT t.id, t.place_id, p.pos_row, p.cell, t.session_id, s.name,
             t.user_id, u.username, u.email, u.phone
             FROM ticket AS t
             JOIN sessions AS s
             ON t.session_id = s.id
             JOIN users AS u
             ON t.user_id = u.id
+            JOIN places as p
+            ON t.place_id = p.id""";
+    private static final String SELECT_TICKETS_BY_SESSION_ID = """
+            SELECT t.id, t.place_id, p.pos_row, p.cell, t.session_id, s.name,
+            t.user_id, u.username, u.email, u.phone
+            FROM ticket AS t
+            JOIN sessions AS s
+            ON t.session_id = s.id
+            JOIN users AS u
+            ON t.user_id = u.id
+            JOIN places as p
+            ON t.place_id = p.id
             WHERE s.id = ?""";
+    private static final String SELECT_ALL_PLACES_FROM_TICKETS_BY_SESSION_ID = """
+            SELECT t.place_id, p.pos_row, p.cell
+            FROM ticket AS t
+            JOIN places AS p
+            ON t.place_id = p.id
+            WHERE t.session_id = ?""";
     private final BasicDataSource pool;
 
     public TicketRepository(BasicDataSource pool) {
@@ -59,8 +71,7 @@ public class TicketRepository {
                 INSERT_TICKET, PreparedStatement.RETURN_GENERATED_KEYS)) {
             st.setInt(1, ticket.getSession().getId());
             st.setInt(2, ticket.getUser().getId());
-            st.setInt(3, ticket.getRow());
-            st.setInt(4, ticket.getCell());
+            st.setInt(3, ticket.getPlace().getId());
             st.execute();
             try (ResultSet res = st.getGeneratedKeys()) {
                 if (res.next()) {
@@ -68,8 +79,6 @@ public class TicketRepository {
                     result = Optional.of(ticket);
                 }
             }
-        } catch (SQLIntegrityConstraintViolationException exc) {
-            return Optional.empty();
         } catch (Exception exc) {
             LOG.error("Exception: ", exc);
         }
@@ -97,8 +106,7 @@ public class TicketRepository {
         try (PreparedStatement st = pool.getConnection().prepareStatement(UPDATE_TICKET)) {
             st.setInt(1, ticket.getSession().getId());
             st.setInt(2, ticket.getUser().getId());
-            st.setInt(3, ticket.getRow());
-            st.setInt(4, ticket.getCell());
+            st.setInt(3, ticket.getPlace().getId());
             result = st.executeUpdate() > 0;
         } catch (Exception exc) {
             LOG.error("Exception: ", exc);
@@ -149,8 +157,32 @@ public class TicketRepository {
                         res.getString("email"),
                         res.getString("phone")
                 ),
-                res.getInt("pos_row"),
-                res.getInt("cell")
+                new Place(
+                        res.getInt("place_id"),
+                        res.getInt("pos_row"),
+                        res.getInt("cell")
+                )
         );
+    }
+
+    public List<Place> findAllPlacesFromTicketsBySessionId(int id) {
+        List<Place> result = new ArrayList<>();
+        try (PreparedStatement st = pool.getConnection().prepareStatement(
+                SELECT_ALL_PLACES_FROM_TICKETS_BY_SESSION_ID)) {
+            st.setInt(1, id);
+            try (ResultSet res = st.executeQuery()) {
+                while (res.next()) {
+                    result.add(
+                            new Place(
+                                    res.getInt("place_id"),
+                                    res.getInt("pos_row"),
+                                    res.getInt("cell")
+                            ));
+                }
+            }
+        } catch (Exception exc) {
+            LOG.error("Exception when getAllPlacesFromTickets from DB: ", exc);
+        }
+        return result;
     }
 }

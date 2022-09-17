@@ -6,31 +6,27 @@ public class Ticket {
     private int id;
     private Session session;
     private User user;
-    private int row;
-    private int cell;
+    private Place place;
 
     public Ticket() {
     }
 
-    public Ticket(int id, int row, int cell) {
+    public Ticket(int id, Place place) {
         this.id = id;
-        this.row = row;
-        this.cell = cell;
+        this.place = place;
     }
 
-    public Ticket(Session session, User user, int row, int cell) {
+    public Ticket(Session session, User user, Place place) {
         this.session = session;
         this.user = user;
-        this.row = row;
-        this.cell = cell;
+        this.place = place;
     }
 
-    public Ticket(int id, Session session, User user, int row, int cell) {
+    public Ticket(int id, Session session, User user, Place place) {
         this.id = id;
         this.session = session;
         this.user = user;
-        this.row = row;
-        this.cell = cell;
+        this.place = place;
     }
 
     public int getId() {
@@ -49,28 +45,20 @@ public class Ticket {
         this.session = session;
     }
 
-    public int getRow() {
-        return row;
-    }
-
-    public void setRow(int row) {
-        this.row = row;
-    }
-
-    public int getCell() {
-        return cell;
-    }
-
-    public void setCell(int cell) {
-        this.cell = cell;
-    }
-
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
     }
 
     @Override
@@ -95,8 +83,7 @@ public class Ticket {
         return "Ticket{" + "id=" + id
                 + ", session=" + session
                 + ", user=" + user
-                + ", row=" + row
-                + ", cell=" + cell
+                + ", place=" + place
                 + '}';
     }
 }

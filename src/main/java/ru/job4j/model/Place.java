@@ -1,17 +1,16 @@
-package ru.job4j.dto;
+package ru.job4j.model;
 
 import java.util.Objects;
 
-public class PlaceDTO {
+public class Place {
     private int id;
     private int row;
     private int cell;
-    private boolean isTaken = false;
 
-    public PlaceDTO() {
+    public Place() {
     }
 
-    public PlaceDTO(int id, int row, int cell) {
+    public Place(int id, int row, int cell) {
         this.id = id;
         this.row = row;
         this.cell = cell;
@@ -33,14 +32,6 @@ public class PlaceDTO {
         this.cell = cell;
     }
 
-    public boolean isTaken() {
-        return isTaken;
-    }
-
-    public void setTaken(boolean taken) {
-        isTaken = taken;
-    }
-
     public int getId() {
         return id;
     }
@@ -57,7 +48,7 @@ public class PlaceDTO {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        PlaceDTO placeDTO = (PlaceDTO) o;
+        Place placeDTO = (Place) o;
         return row == placeDTO.row && cell == placeDTO.cell;
     }
 
@@ -70,7 +61,6 @@ public class PlaceDTO {
     public String toString() {
         return "Place{" + "id=" + id
                 + ", row=" + row
-                + ", cell=" + cell
-                + ", isTaken=" + isTaken + '}';
+                + ", cell=" + cell + '}';
     }
 }

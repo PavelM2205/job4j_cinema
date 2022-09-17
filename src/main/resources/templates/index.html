@@ -100,44 +100,44 @@
                                         1
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(0).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(0).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="place" th:value="${freePlaces.get(0).getId()}">
+                                        <i th:if="${freePlaces.get(1) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(1) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" name="place" th:value="1">
                                             <label class="btn btn-outline-primary" for="btncheck1" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(1).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(1).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" name="place" th:value="${freePlaces.get(1).getId()}">
+                                        <i th:if="${freePlaces.get(2) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(2) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" name="place" th:value="2">
                                             <label class="btn btn-outline-primary" for="btncheck2" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(2).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(2).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="place" th:value="${freePlaces.get(2).getId()}">
+                                        <i th:if="${freePlaces.get(3) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(3) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" name="place" th:value="3">
                                             <label class="btn btn-outline-primary" for="btncheck3" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(3).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(3).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" name="place" th:value="${freePlaces.get(3).getId()}">
+                                        <i th:if="${freePlaces.get(4) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(4) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off" name="place" th:value="4">
                                             <label class="btn btn-outline-primary" for="btncheck4" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(4).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(4).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" name="place" th:value="${freePlaces.get(4).getId()}">
+                                        <i th:if="${freePlaces.get(5) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(5) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off" name="place" th:value="5">
                                             <label class="btn btn-outline-primary" for="btncheck5" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(5).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(5).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" name="place" th:value="${freePlaces.get(5).getId()}">
+                                        <i th:if="${freePlaces.get(6) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(6) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off" name="place" th:value="6">
                                             <label class="btn btn-outline-primary" for="btncheck6" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
@@ -147,44 +147,44 @@
                                         2
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(6).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(6).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off" name="place" th:value="${freePlaces.get(6).getId()}">
+                                        <i th:if="${freePlaces.get(7) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(7) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off" name="place" th:value="7">
                                             <label class="btn btn-outline-primary" for="btncheck7" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(7).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(7).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off"name="place" th:value="${freePlaces.get(7).getId()}">
+                                        <i th:if="${freePlaces.get(8) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(8) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck8" autocomplete="off"name="place" th:value="8">
                                             <label class="btn btn-outline-primary" for="btncheck8" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(8).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(8).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off" name="place" th:value="${freePlaces.get(8).getId()}">
+                                        <i th:if="${freePlaces.get(9) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(9) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck9" autocomplete="off" name="place" th:value="9">
                                             <label class="btn btn-outline-primary" for="btncheck9" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(9).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(9).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck10" autocomplete="off" name="place" th:value="${freePlaces.get(9).getId()}">
+                                        <i th:if="${freePlaces.get(10) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(10) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck10" autocomplete="off" name="place" th:value="10">
                                             <label class="btn btn-outline-primary" for="btncheck10" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(10).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(10).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck11" autocomplete="off" name="place" th:value="${freePlaces.get(10).getId()}">
+                                        <i th:if="${freePlaces.get(11) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(11) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck11" autocomplete="off" name="place" th:value="11">
                                             <label class="btn btn-outline-primary" for="btncheck11" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(11).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(11).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck12" autocomplete="off" name="place" th:value="${freePlaces.get(11).getId()}">
+                                        <i th:if="${freePlaces.get(12) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(12) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck12" autocomplete="off" name="place" th:value="12">
                                             <label class="btn btn-outline-primary" for="btncheck12" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
@@ -194,44 +194,44 @@
                                         3
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(12).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(12).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck13" autocomplete="off" name="place" th:value="${freePlaces.get(12).getId()}">
+                                        <i th:if="${freePlaces.get(13) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(13) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck13" autocomplete="off" name="place" th:value="13">
                                             <label class="btn btn-outline-primary" for="btncheck13" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(13).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(13).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck14" autocomplete="off" name="place" th:value="${freePlaces.get(13).getId()}">
+                                        <i th:if="${freePlaces.get(14) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(14) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck14" autocomplete="off" name="place" th:value="14">
                                             <label class="btn btn-outline-primary" for="btncheck14" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(14).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(14).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck15" autocomplete="off" name="place" th:value="${freePlaces.get(14).getId()}">
+                                        <i th:if="${freePlaces.get(15) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(15) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck15" autocomplete="off" name="place" th:value="15">
                                             <label class="btn btn-outline-primary" for="btncheck15" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(15).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(15).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck16" autocomplete="off" name="place" th:value="${freePlaces.get(15).getId()}">
+                                        <i th:if="${freePlaces.get(16) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(16) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck16" autocomplete="off" name="place" th:value="16">
                                             <label class="btn btn-outline-primary" for="btncheck16" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(16).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(16).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck17" autocomplete="off" name="place" th:value="${freePlaces.get(16).getId()}">
+                                        <i th:if="${freePlaces.get(17) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(17) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck17" autocomplete="off" name="place" th:value="17">
                                             <label class="btn btn-outline-primary" for="btncheck17" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(17).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(17).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck18" autocomplete="off" name="place" th:value="${freePlaces.get(17).getId()}">
+                                        <i th:if="${freePlaces.get(18) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(18) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck18" autocomplete="off" name="place" th:value="18">
                                             <label class="btn btn-outline-primary" for="btncheck18" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
@@ -241,44 +241,44 @@
                                         4
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(18).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(18).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck19" autocomplete="off" name="place" th:value="${freePlaces.get(18).getId()}">
+                                        <i th:if="${freePlaces.get(19) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(19) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck19" autocomplete="off" name="place" th:value="19">
                                             <label class="btn btn-outline-primary" for="btncheck19" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(19).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(19).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck20" autocomplete="off" name="place" th:value="${freePlaces.get(19).getId()}">
+                                        <i th:if="${freePlaces.get(20) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(20) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck20" autocomplete="off" name="place" th:value="20">
                                             <label class="btn btn-outline-primary" for="btncheck20" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(20).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(20).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck21" autocomplete="off" name="place" th:value="${freePlaces.get(20).getId()}">
+                                        <i th:if="${freePlaces.get(21) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(21) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck21" autocomplete="off" name="place" th:value="21">
                                             <label class="btn btn-outline-primary" for="btncheck21" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(21).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(21).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck22" autocomplete="off" name="place" th:value="${freePlaces.get(21).getId()}">
+                                        <i th:if="${freePlaces.get(22) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(22) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck22" autocomplete="off" name="place" th:value="22">
                                             <label class="btn btn-outline-primary" for="btncheck22" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(22).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(22).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck23" autocomplete="off" name="place" th:value="${freePlaces.get(22).getId()}">
+                                        <i th:if="${freePlaces.get(23) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(23) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck23" autocomplete="off" name="place" th:value="23">
                                             <label class="btn btn-outline-primary" for="btncheck23" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(23).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(23).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck24" autocomplete="off" name="place" th:value="${freePlaces.get(23).getId()}">
+                                        <i th:if="${freePlaces.get(24) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(24) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck24" autocomplete="off" name="place" th:value="24">
                                             <label class="btn btn-outline-primary" for="btncheck24" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
@@ -288,44 +288,44 @@
                                         5
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(24).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(24).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck25" autocomplete="off" name="place" th:value="${freePlaces.get(24).getId()}">
+                                        <i th:if="${freePlaces.get(25) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(25) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck25" autocomplete="off" name="place" th:value="25">
                                             <label class="btn btn-outline-primary" for="btncheck25" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(25).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(25).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck26" autocomplete="off" name="place" th:value="${freePlaces.get(25).getId()}">
+                                        <i th:if="${freePlaces.get(26) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(26) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck26" autocomplete="off" name="place" th:value="26">
                                             <label class="btn btn-outline-primary" for="btncheck26" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(26).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(26).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck27" autocomplete="off" name="place" th:value="${freePlaces.get(26).getId()}">
+                                        <i th:if="${freePlaces.get(27) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(27) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck27" autocomplete="off" name="place" th:value="27">
                                             <label class="btn btn-outline-primary" for="btncheck27" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(27).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(27).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck28" autocomplete="off" name="place" th:value="${freePlaces.get(27).getId()}">
+                                        <i th:if="${freePlaces.get(28) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(28) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck28" autocomplete="off" name="place" th:value="28">
                                             <label class="btn btn-outline-primary" for="btncheck28" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(28).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(28).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck29" autocomplete="off" name="place" th:value="${freePlaces.get(28).getId()}">
+                                        <i th:if="${freePlaces.get(29) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(29) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck29" autocomplete="off" name="place" th:value="29">
                                             <label class="btn btn-outline-primary" for="btncheck29" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(29).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(29).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck30" autocomplete="off" name="place" th:value="${freePlaces.get(29).getId()}">
+                                        <i th:if="${freePlaces.get(30) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(30) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck30" autocomplete="off" name="place" th:value="30">
                                             <label class="btn btn-outline-primary" for="btncheck30" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
@@ -335,44 +335,44 @@
                                         6
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(30).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(30).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck31" autocomplete="off" name="place" th:value="${freePlaces.get(30).getId()}">
+                                        <i th:if="${freePlaces.get(31) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(31) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck31" autocomplete="off" name="place" th:value="31">
                                             <label class="btn btn-outline-primary" for="btncheck31" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(31).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(31).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck32" autocomplete="off" name="place" th:value="${freePlaces.get(31).getId()}">
+                                        <i th:if="${freePlaces.get(32) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(32) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck32" autocomplete="off" name="place" th:value="32">
                                             <label class="btn btn-outline-primary" for="btncheck32" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(32).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(32).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck33" autocomplete="off" name="place" th:value="${freePlaces.get(32).getId()}">
+                                        <i th:if="${freePlaces.get(33) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(33) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck33" autocomplete="off" name="place" th:value="33">
                                             <label class="btn btn-outline-primary" for="btncheck33" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(33).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(33).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck34" autocomplete="off" name="place" th:value="${freePlaces.get(33).getId()}">
+                                        <i th:if="${freePlaces.get(34) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(34) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck34" autocomplete="off" name="place" th:value="34">
                                             <label class="btn btn-outline-primary" for="btncheck34" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(34).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(34).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck35" autocomplete="off" name="place" th:value="${freePlaces.get(34).getId()}">
+                                        <i th:if="${freePlaces.get(35) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(35) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck35" autocomplete="off" name="place" th:value="35">
                                             <label class="btn btn-outline-primary" for="btncheck35" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(35).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(35).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck36" autocomplete="off" name="place" th:value="${freePlaces.get(35).getId()}">
+                                        <i th:if="${freePlaces.get(36) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(36) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck36" autocomplete="off" name="place" th:value="36">
                                             <label class="btn btn-outline-primary" for="btncheck36" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
@@ -382,44 +382,44 @@
                                         7
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(36).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(36).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck37" autocomplete="off" name="place" th:value="${freePlaces.get(36).getId()}">
+                                        <i th:if="${freePlaces.get(37) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(37) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck37" autocomplete="off" name="place" th:value="37">
                                             <label class="btn btn-outline-primary" for="btncheck37" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(37).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(37).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck38" autocomplete="off" name="place" th:value="${freePlaces.get(37).getId()}">
+                                        <i th:if="${freePlaces.get(38) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(38) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck38" autocomplete="off" name="place" th:value="38">
                                             <label class="btn btn-outline-primary" for="btncheck38" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(38).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(38).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck39" autocomplete="off" name="place" th:value="${freePlaces.get(38).getId()}">
+                                        <i th:if="${freePlaces.get(39) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(39) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck39" autocomplete="off" name="place" th:value="39">
                                             <label class="btn btn-outline-primary" for="btncheck39" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(39).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(39).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck40" autocomplete="off" name="place" th:value="${freePlaces.get(39).getId()}">
+                                        <i th:if="${freePlaces.get(40) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(40) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck40" autocomplete="off" name="place" th:value="40">
                                             <label class="btn btn-outline-primary" for="btncheck40" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(40).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(40).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck41" autocomplete="off" name="place" th:value="${freePlaces.get(40).getId()}">
+                                        <i th:if="${freePlaces.get(41) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(41) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck41" autocomplete="off" name="place" th:value="41">
                                             <label class="btn btn-outline-primary" for="btncheck41" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>
                                     <td style="padding-top: 10px;">
-                                        <i th:if="${freePlaces.get(41).isTaken() == true}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
-                                        <div th:if="${freePlaces.get(41).isTaken() == false}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                                            <input type="checkbox" class="btn-check" id="btncheck42" autocomplete="off" name="place" th:value="${freePlaces.get(41).getId()}">
+                                        <i th:if="${freePlaces.get(42) != null}" class="fas fa-square" style="font-size: 30px; margin-left: -18px"></i>
+                                        <div th:if="${freePlaces.get(42) == null}" class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                                            <input type="checkbox" class="btn-check" id="btncheck42" autocomplete="off" name="place" th:value="42">
                                             <label class="btn btn-outline-primary" for="btncheck42" style="height: 27px; margin-left: -18px; margin-top: -3px"></label>
                                         </div>
                                     </td>

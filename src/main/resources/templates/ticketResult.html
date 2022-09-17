@@ -14,8 +14,8 @@
                     <div th:if="${fail_get_ticket}" class="alert alert-warning" role="alert" style="width: 50%" th:object="${failTicket}">
                         <h4 class="alert-heading">Упс...</h4>
                         <p>К сожалению билет на фильм <span th:text="${failTicket.session.getName()}"></span>
-                            на указанные места: ряд <span th:text="${failTicket.getRow()}"></span>, место:
-                            <span th:text="${failTicket.getCell()}"></span> уже приобретен другим посетителем.</p>
+                            на указанные места: ряд <span th:text="${failTicket.place.getRow()}"></span>, место:
+                            <span th:text="${failTicket.place.getCell()}"></span> уже приобретен другим посетителем.</p>
                         <hr>
                         <p class="mb-0">Попробуйте выбрать другие места.</p>
                     </div>

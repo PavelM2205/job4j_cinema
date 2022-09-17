@@ -9,7 +9,6 @@ import ru.job4j.model.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -48,8 +47,6 @@ public class UsersRepository {
                     result = Optional.of(user);
                 }
             }
-        } catch (SQLIntegrityConstraintViolationException exc) {
-            return Optional.empty();
         } catch (Exception exc) {
             LOG.error("Exception: ", exc);
         }
